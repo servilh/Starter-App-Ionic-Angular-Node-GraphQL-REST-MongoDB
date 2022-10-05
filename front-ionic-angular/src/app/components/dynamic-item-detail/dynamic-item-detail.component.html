@@ -1,0 +1,4 @@
+<ion-item *ngFor="let prp of getEntries()">
+  <ion-label position="stacked">{{ keyLanguage +"."+prp | translate}}</ion-label>
+  <ion-input [(ngModel)]="item[prp]" [type]="getItemType(prp)" [readonly]="readonly || keysAlwaysReadOnly.includes(prp)"></ion-input>
+</ion-item>

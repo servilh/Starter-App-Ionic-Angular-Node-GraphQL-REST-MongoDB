@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>GRAPHQL - Item Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-dynamic-item-detail [item]="item" itemType="Game" [readonly] ="readonly" [keysAlwaysReadOnly]="['_id']"></app-dynamic-item-detail>
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-button (click)="readonly=!readonly" expand="full" >{{readonly ? "Edit" : "Cancel"}}</ion-button>
+    <ion-button (click)="deleteDataHandler()" expand="full"  *ngIf="readonly">Delete</ion-button>
+    <ion-button (click)="updateDataHandler()" expand="full"  *ngIf="!readonly">Save</ion-button>
+  </ion-toolbar>
+</ion-footer>

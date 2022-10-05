@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>GRAPHQL - New Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input [(ngModel)]="newGame.name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Price</ion-label>
+    <ion-input [(ngModel)]="newGame.price" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Category</ion-label>
+    <ion-input [(ngModel)]="newGame.category"></ion-input>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <ion-button class="full" (click)="saveHandler()" expand="full">SAVE</ion-button> 
+</ion-footer>
