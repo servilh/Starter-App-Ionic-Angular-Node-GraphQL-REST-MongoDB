@@ -22,4 +22,14 @@ export class FolderPage implements OnInit {
       this.loading = res.loading; 
     });
   }
+
+  getColor(status: String): String {
+    if(status == "Done") {
+      return "success";
+    }
+    if(status == "To Do") {
+      return "primary";
+    }
+    return "warning";
+  }
 }

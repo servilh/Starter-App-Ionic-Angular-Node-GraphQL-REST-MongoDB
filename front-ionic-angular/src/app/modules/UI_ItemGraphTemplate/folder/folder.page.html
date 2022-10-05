@@ -19,6 +19,7 @@
     <ion-label>
       {{item.name}}
     </ion-label>
+    <ion-badge slot="start" [color]="getColor(item.status)">{{item.status}}</ion-badge>
   </ion-item>
 </ion-content>
 
