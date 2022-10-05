@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
-import Game from '../../../../../common/src/models/game';
+import Task from '../../../../../common/src/models/task';
 
 import { DynamicItemDetailComponent } from './dynamic-item-detail.component';
 
@@ -21,10 +21,10 @@ describe('DynamicItemDetailComponent', () => {
     fixture = TestBed.createComponent(DynamicItemDetailComponent);
     component = fixture.componentInstance;
     component.item =  {
-      name: 'name', price: 2, category: 'cat'
-    } as Game;
+      name: 'name', priority: 2, status: 'cat'
+    } as Task;
     component.readonly = false;
-    component.itemType = 'Game';
+    component.itemType = 'Task';
     component.keysAlwaysReadOnly =[];
     fixture.detectChanges();
   }));
