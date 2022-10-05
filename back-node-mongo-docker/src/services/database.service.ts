@@ -1,7 +1,7 @@
 import * as mongoDB from "mongodb";
 import * as dotenv from "dotenv";
 
-export const collections: { games?: mongoDB.Collection } = {}
+export const collections: { tasks?: mongoDB.Collection } = {}
 
 export async function connectToDatabase () {
     try{
@@ -13,11 +13,11 @@ export async function connectToDatabase () {
             
         const db: mongoDB.Db = client.db(process.env.DB_NAME);
     
-        const gamesCollection: mongoDB.Collection = db.collection(process.env.GAMES_COLLECTION_NAME!);
+        const tasksCollection: mongoDB.Collection = db.collection(process.env.TASKS_COLLECTION_NAME!);
     
-        collections.games = gamesCollection;
+        collections.tasks = tasksCollection;
         
-        console.log(`Successfully connected to database: ${db.databaseName} and collection: ${gamesCollection.collectionName}`);
+        console.log(`Successfully connected to database: ${db.databaseName} and collection: ${tasksCollection.collectionName}`);
     
     }catch(error) {
         throw Error("Database connection FAILED: " + error);

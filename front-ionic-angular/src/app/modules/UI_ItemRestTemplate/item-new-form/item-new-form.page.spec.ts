@@ -7,8 +7,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { CustomComponentsModule } from 'src/app/components/custom-components.module';
-import { GamesService } from 'src/app/services/games.service';
-import Game from '../../../../../../common/src/models/game';
+import { TasksService } from 'src/app/services/task.service';
+import Task from '../../../../../../common/src/models/task';
  
 import { ItemNewFormPage } from './item-new-form.page';
 

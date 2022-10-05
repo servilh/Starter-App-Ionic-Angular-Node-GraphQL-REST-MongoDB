@@ -4,81 +4,81 @@ import { ApolloQueryResult } from '@apollo/client/core/types';
 import { Apollo, ApolloBase, gql, MutationResult } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import Game from '../../../../common/src/models/game';
+import Task from '../../../../common/src/models/task';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class GamesGqlService {
+export class TasksGqlService {
   private apollo: ApolloBase;
-  public gamesCache: Array<Game>;
+  public tasksCache: Array<Task>;
 
   constructor(private apolloProvider: Apollo) {
     this.apollo = this.apolloProvider.use('newClientName');
   }
 
-  private Q_GET_GAMES = gql`
+  private Q_GET_TASKS = gql`
     {
-      getGames{
+      getTasks{
           _id,
           name,
-          category,
-          price
+          status,
+          priority
       }
     }
   `;
-  GetItems(): Observable<ApolloQueryResult<Array<Game>>> {
+  GetItems(): Observable<ApolloQueryResult<Array<Task>>> {
     return this.apollo.watchQuery<any>({
-      query: this.Q_GET_GAMES,
+      query: this.Q_GET_TASKS,
     }).valueChanges.pipe(map((result) => {
-      result.data = result.data?.getGames
+      result.data = result.data?.getTasks
       return result;
-    }), tap((result) => this.gamesCache = result.data));
+    }), tap((result) => this.tasksCache = result.data));
   }
 
-  private Q_GET_GAME = gql`
+  private Q_GET_TASK = gql`
     {
-      getGame(id: $id){
+      getTask(id: $id){
           _id,
           name,
-          category,
-          price
+          status,
+          priority
       }
     }
 `;
-  GetItem(id: string): Observable<ApolloQueryResult<Game>> {
+  GetItem(id: string): Observable<ApolloQueryResult<Task>> {
     return this.apollo.watchQuery<any>({
-      query: this.Q_GET_GAME,
+      query: this.Q_GET_TASK,
       variables: {
         id: id
       },
       fetchPolicy: 'no-cache'
     }).valueChanges.pipe(map((result) => {
-      result.data = result.data?.getGames
+      result.data = result.data?.getTasks
       return result;
-    }), tap((result) => this.gamesCache = result.data));
+    }), tap((result) => this.tasksCache = result.data));
   }
 
-  private MUTATION_UPSERT = gql`mutation upsertGame($game: GameInput!) {
-    upsertGame(game: $game)
+  private MUTATION_UPSERT = gql`mutation upsertTask($task: TaskInput!) {
+    upsertTask(task: $task)
   }`;
-  Upsert(game: Game): Observable<MutationResult<any>> {
+  Upsert(task: Task): Observable<MutationResult<any>> {
     return this.apollo.mutate({
       mutation: this.MUTATION_UPSERT,
       variables: {
-        game: {
-          id: game._id,
-          name: game.name,
-          category: game.category,
-          price: Number(game.price)
+        task: {
+          id: task._id,
+          name: task.name,
+          status: task.status,
+          priority: Number(task.priority)
         }
       },
       //REFRESHING ALL QUERY CACHE
       refetchQueries: [
         {
-          query: this.Q_GET_GAMES
+          query: this.Q_GET_TASKS
         },
       ],
     }).pipe(map((result) => {
@@ -88,8 +88,8 @@ export class GamesGqlService {
   }
 
   Delete(id: string): Observable<MutationResult<any>> {
-    const MUTATION_UPSERT = gql`mutation deleteGame($id: String!) {
-      deleteGame(id: $id)
+    const MUTATION_UPSERT = gql`mutation deleteTask($id: String!) {
+      deleteTask(id: $id)
     }`;
 
     return this.apollo.mutate({
@@ -99,11 +99,11 @@ export class GamesGqlService {
       },
       update: (store, dataRes: Omit<FetchResult<any, Record<string, any>, Record<string, any>>, "context">) => {
         // Read the data from our cache for this query.  
-        const data: any = store.readQuery({ query: this.Q_GET_GAMES });
+        const data: any = store.readQuery({ query: this.Q_GET_TASKS });
         // Add our comment from the mutation to the end.
-        var id2find = String(dataRes.data.deleteGame);  
-        const newData =  data.getGames.filter((e) => String(e._id) != id2find);
-        store.writeQuery({ query: this.Q_GET_GAMES, data: { getGames: newData } });        
+        var id2find = String(dataRes.data.deleteTask);  
+        const newData =  data.getTasks.filter((e) => String(e._id) != id2find);
+        store.writeQuery({ query: this.Q_GET_TASKS, data: { getTasks: newData } });        
       }
     }).pipe(map((result) => {
       result.data = result.data;

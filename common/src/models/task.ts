@@ -3,13 +3,13 @@ import { ObjectId } from "mongodb";
 import { Field, ObjectType } from "type-graphql"
 // Class Implementation
 @ObjectType()
-export default class Game {
+export default class Task {
     @Field()
     public name!: string;
     @Field()
-    public price!: number;
+    public priority!: number;
     @Field()
-    public category!: string;
+    public status!: string;
     @Field(() => String)
     public _id?: ObjectId;
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import Game from '../../../../../../common/src/models/game';
+import Task from '../../../../../../common/src/models/task';
 import { Location } from '@angular/common';
-import { GamesGqlService } from 'src/app/services/games-gql.service';
+import { TasksGqlService } from 'src/app/services/task-gql.service';
 
 @Component({
   selector: 'app-item-new-form',
@@ -9,16 +9,16 @@ import { GamesGqlService } from 'src/app/services/games-gql.service';
   styleUrls: ['./item-new-form.page.scss'],
 })
 export class ItemNewFormPage implements OnInit {
-  public newGame: Game = {name: 'name', price: 0.0, category: 'cat'};
+  public newTask: Task = {name: 'name', priority: 0.0, status: 'cat'};
    
-  constructor(private dataService: GamesGqlService, private location: Location) { }
+  constructor(private dataService: TasksGqlService, private location: Location) { }
 
 
   ngOnInit() {
   }
 
   saveHandler() {
-    this.dataService.Upsert(this.newGame).subscribe(r=>{
+    this.dataService.Upsert(this.newTask).subscribe(r=>{
       this.location.back();
     });
   }

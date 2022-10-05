@@ -7,8 +7,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { CustomComponentsModule } from 'src/app/components/custom-components.module';
-import { GamesService } from 'src/app/services/games.service';
-import Game from '../../../../../../common/src/models/game';
+import { TasksService } from 'src/app/services/task.service';
+import Task from '../../../../../../common/src/models/task';
 import { ItemDetailPageRoutingModule } from './item-detail-routing.module';
 
 import { ItemDetailPage } from './item-detail.page';
@@ -28,7 +28,7 @@ describe('ItemDetailPage', () => {
             }
           }
         },
-        GamesService,
+        TasksService,
         Location],
       imports: [IonicModule.forRoot(),
         CommonModule,
@@ -41,7 +41,7 @@ describe('ItemDetailPage', () => {
 
     fixture = TestBed.createComponent(ItemDetailPage);
     component = fixture.componentInstance;
-    component.item = { name: "", price: 2, category: "" } as Game;
+    component.item = { name: "", priority: 2, status: "" } as Task;
     fixture.detectChanges();
   }));
 

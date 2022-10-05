@@ -7,14 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'REST example', url: '/folder/rest', icon: 'mail' },
-    { title: 'GRAPHQL example', url: '/graphql-folder/Graph', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'REST example', url: '/folder/REST', icon: 'mail' },
+    { title: 'GRAPHQL example', url: '/graphql-folder/Graph', icon: 'paper-plane' }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = ['Label01', 'Label02', 'Label03', 'Label04', 'Label05', 'Label06'];
   public language:string = 'en';
 
   constructor(private translate: TranslateService) {

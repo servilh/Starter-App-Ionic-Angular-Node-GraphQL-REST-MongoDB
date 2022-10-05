@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import { connectToDatabase } from "./services/database.service"
 import { startGraphQL } from "./services/graphql.service";
-import { gamesRouter } from "./routes/games.router";
+import { tasksRouter } from "./routes/tasks.router";
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -36,7 +36,7 @@ async function main() {
         });
        
         //REST API
-        app.use("/games", gamesRouter);
+        app.use("/tasks", tasksRouter);
 
         app.listen(port, () => {
             console.log(`Server started2 at http://localhost:${port}`);

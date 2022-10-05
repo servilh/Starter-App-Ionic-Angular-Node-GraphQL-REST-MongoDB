@@ -3,10 +3,10 @@
     "tab1": {
       "tabName": "Tab One"
     },
-    "entity.Game":{
-      "name": "Name",
-      "price": "Price",
-      "category":"Category"
+    "entity.Task":{
+      "name": "Nombre",
+      "priority": "Prioridad",
+      "status":"Estado"
 
     }
     

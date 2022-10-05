@@ -2,10 +2,10 @@
     "tab1": {
       "tabName": "pestaña uno"
     },
-    "entity.Game":{
+    "entity.Task":{
       "name": "Name",
-      "price": "Price",
-      "category":"Category"
+      "priority": "Priority",
+      "status":"Status"
 
     }
   }

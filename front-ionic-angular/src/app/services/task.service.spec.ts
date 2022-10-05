@@ -2,16 +2,16 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { GamesService } from './games.service';
+import { TasksService } from './task.service';
 
-describe('GamesService', () => {
-  let service: GamesService;
+describe('TasksService', () => {
+  let service: TasksService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports:[HttpClientModule]
     });
-    service = TestBed.inject(GamesService);
+    service = TestBed.inject(TasksService);
   });
 
   it('should be created', () => {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import Game from '../../../../common/src/models/game';
+import Task from '../../../../common/src/models/task';
 import ApiResult from '../../../../common/src/models/apiResult';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError, tap } from 'rxjs/operators';
@@ -8,9 +8,9 @@ import { retry, catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class GamesService {
-  public gamesCache: Array<Game>
-  baseurl = 'http://localhost:4000/games/';
+export class TasksService {
+  public tasksCache: Array<Task>
+  baseurl = 'http://localhost:4000/Tasks/';
   constructor(private http: HttpClient) { }
   // Http Headers
   httpOptions = {
@@ -28,21 +28,21 @@ export class GamesService {
       ).pipe(retry(3), catchError(this.errorHandl));
   }
   // GET
-  GetItem(id): Observable<Game> {
+  GetItem(id): Observable<Task> {
     return this.http
-      .get<Game>(this.baseurl  + id)
+      .get<Task>(this.baseurl  + id)
       .pipe(retry(3), catchError(this.errorHandl));
   }
   // GET
-  GetItems(): Observable<Array<Game>> {
+  GetItems(): Observable<Array<Task>> {
     return this.http
-      .get<Array<Game>>(this.baseurl)
-      .pipe(retry(3), tap(games => this.gamesCache = games), catchError(this.errorHandl));
+      .get<Array<Task>>(this.baseurl)
+      .pipe(retry(3), tap(tasks => this.tasksCache = tasks), catchError(this.errorHandl));
   }
   // PUT
-  Update(id, data): Observable<Game> {
+  Update(id, data): Observable<Task> {
     return this.http
-      .put<Game>(
+      .put<Task>(
         this.baseurl  + id,
         JSON.stringify(data),
         this.httpOptions
@@ -52,7 +52,7 @@ export class GamesService {
   // DELETE
   Delete(id) {
     return this.http
-      .delete<Game>(this.baseurl  + id, this.httpOptions)
+      .delete<Task>(this.baseurl  + id, this.httpOptions)
       .pipe(retry(3), catchError(this.errorHandl));
   }
   // Error handling

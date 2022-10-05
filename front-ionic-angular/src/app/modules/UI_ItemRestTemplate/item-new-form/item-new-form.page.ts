@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GamesService } from 'src/app/services/games.service';
-import Game from '../../../../../../common/src/models/game';
+import { TasksService } from 'src/app/services/task.service';
+import Task from '../../../../../../common/src/models/task';
 import { Location } from '@angular/common';
 
 @Component({
@@ -10,16 +10,16 @@ import { Location } from '@angular/common';
   styleUrls: ['./item-new-form.page.scss'],
 })
 export class ItemNewFormPage implements OnInit {
-  public newGame: Game = {name: 'name', price: 0.0, category: 'cat'};
+  public newTask: Task = {name: 'name', priority: 0.0, status: 'cat'};
 
-  constructor(private dataService: GamesService, private location: Location) { }
+  constructor(private dataService: TasksService, private location: Location) { }
 
 
   ngOnInit() {
   }
 
   saveHandler() {
-    this.dataService.Create(this.newGame).subscribe(r=>{
+    this.dataService.Create(this.newTask).subscribe(r=>{
       this.location.back();
     });
   }

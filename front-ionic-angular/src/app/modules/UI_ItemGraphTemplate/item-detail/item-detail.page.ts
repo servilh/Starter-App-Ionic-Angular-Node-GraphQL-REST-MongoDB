@@ -1,8 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GamesGqlService } from 'src/app/services/games-gql.service';
-import Game from '../../../../../../common/src/models/game';
+import { TasksGqlService } from 'src/app/services/task-gql.service';
+import Task from '../../../../../../common/src/models/task';
 
 @Component({
   selector: 'app-item-detail',
@@ -10,18 +10,18 @@ import Game from '../../../../../../common/src/models/game';
   styleUrls: ['./item-detail.page.scss'],
 })
 export class ItemDetailPage implements OnInit {
-  public item: Game;
+  public item: Task;
   public readonly: boolean;
-  public editablePrps: Array<string> = ['name', 'category', 'price'];
-  constructor(private activatedRoute: ActivatedRoute, private dataSrv: GamesGqlService, private location: Location) { }
+  public editablePrps: Array<string> = ['name', 'status', 'priority'];
+  constructor(private activatedRoute: ActivatedRoute, private dataSrv: TasksGqlService, private location: Location) { }
 
   ngOnInit() {
     var id = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.readonly = true;
 
-    if (this.dataSrv.gamesCache)
-      this.item = { ... this.dataSrv.gamesCache.find(x => x._id.toString() == id) };
+    if (this.dataSrv.tasksCache)
+      this.item = { ... this.dataSrv.tasksCache.find(x => x._id.toString() == id) };
     else
       this.dataSrv.GetItem(id).subscribe(i => {
         this.item = i.data;

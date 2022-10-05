@@ -5,7 +5,7 @@ import { buildSchema } from 'type-graphql';
 import { Express } from 'express';
 
 import { PingResolver } from "../graphql/resolvers/ping";
-import { GameResolver } from "../graphql/resolvers/gamesResolver";
+import { TaskResolver } from "../graphql/resolvers/tasksResolver";
 
 export async function startGraphQL(app: Express) {
     //GRAPHQL: in route path of express /graphql
@@ -13,7 +13,7 @@ export async function startGraphQL(app: Express) {
         
         const server = new ApolloServer({
             schema: await buildSchema({
-                resolvers: [PingResolver, GameResolver],
+                resolvers: [PingResolver, TaskResolver],
                 validate: false
             }),
             context: ({ req, res }) => ({ req, res })
