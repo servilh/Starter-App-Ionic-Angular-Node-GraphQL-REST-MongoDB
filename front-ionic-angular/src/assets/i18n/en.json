@@ -4,9 +4,10 @@
       "tabName": "Tab One"
     },
     "entity.Task":{
-      "name": "Nombre",
-      "priority": "Prioridad",
-      "status":"Estado"
+      "name": "Name",
+      "priority": "Priority",
+      "status":"Status"
+      
 
     }
     

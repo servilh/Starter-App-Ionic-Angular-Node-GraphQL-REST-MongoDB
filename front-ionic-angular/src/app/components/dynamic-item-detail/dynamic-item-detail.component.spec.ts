@@ -21,7 +21,7 @@ describe('DynamicItemDetailComponent', () => {
     fixture = TestBed.createComponent(DynamicItemDetailComponent);
     component = fixture.componentInstance;
     component.item =  {
-      name: 'name', priority: 2, status: 'cat'
+      name: 'name', priority: 2, status: 'To Do'
     } as Task;
     component.readonly = false;
     component.itemType = 'Task';

@@ -9,7 +9,7 @@ import { TasksGqlService } from 'src/app/services/task-gql.service';
   styleUrls: ['./item-new-form.page.scss'],
 })
 export class ItemNewFormPage implements OnInit {
-  public newTask: Task = {name: 'name', priority: 0.0, status: 'cat'};
+  public newTask: Task = {name: 'name', priority: 0.0, status: 'To Do'};
    
   constructor(private dataService: TasksGqlService, private location: Location) { }
 

@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./item-new-form.page.scss'],
 })
 export class ItemNewFormPage implements OnInit {
-  public newTask: Task = {name: 'name', priority: 0.0, status: 'cat'};
+  public newTask: Task = {name: 'name', priority: 0.0, status: 'To DO'};
 
   constructor(private dataService: TasksService, private location: Location) { }
 
