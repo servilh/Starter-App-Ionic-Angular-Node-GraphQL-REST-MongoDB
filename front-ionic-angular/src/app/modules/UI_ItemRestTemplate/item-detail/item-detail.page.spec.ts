@@ -24,7 +24,7 @@ describe('ItemDetailPage', () => {
           provide: ActivatedRoute,
           useValue: {
             snapshot: {
-              paramMap: { get: () => "62a74144f8fd7ef778a541e1" },
+              paramMap: { get: () => "633da9d43585b5264761ab01" },
             }
           }
         },
