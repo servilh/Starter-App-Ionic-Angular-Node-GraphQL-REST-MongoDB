@@ -38,8 +38,7 @@ export class TasksGqlService {
     }), tap((result) => this.tasksCache = result.data));
   }
 
-  private Q_GET_TASK = gql`
-    {
+  private Q_GET_TASK = gql`query getTask($id: String!){
       getTask(id: $id){
           _id,
           name,
@@ -56,9 +55,9 @@ export class TasksGqlService {
       },
       fetchPolicy: 'no-cache'
     }).valueChanges.pipe(map((result) => {
-      result.data = result.data?.getTasks
+      result.data = result.data?.getTask
       return result;
-    }), tap((result) => this.tasksCache = result.data));
+    }));
   }
 
   private MUTATION_UPSERT = gql`mutation upsertTask($task: TaskInput!) {

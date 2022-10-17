@@ -10,8 +10,10 @@ import { CustomComponentsModule } from 'src/app/components/custom-components.mod
 import { TasksService } from 'src/app/services/task.service';
 import Task from '../../../../../../common/src/models/task';
 import { ItemDetailPageRoutingModule } from './item-detail-routing.module';
-
+import { ApolloModule, APOLLO_NAMED_OPTIONS, NamedOptions } from 'apollo-angular';
 import { ItemDetailPage } from './item-detail.page';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache } from '@apollo/client/core';
 
 describe('ItemDetailPage', () => {
   let component: ItemDetailPage;
@@ -24,9 +26,25 @@ describe('ItemDetailPage', () => {
           provide: ActivatedRoute,
           useValue: {
             snapshot: {
-              paramMap: { get: () => "62a74144f8fd7ef778a541e1" },
+              paramMap: { get: () => "633da9d43585b5264761ab01" },
             }
           }
+        },
+        {
+          provide: APOLLO_NAMED_OPTIONS, // <-- Different from standard initialization
+          useFactory(httpLink: HttpLink): NamedOptions {
+            return {
+              newClientName: {
+                // <-- this settings will be saved by name: newClientName
+                cache: new InMemoryCache(),
+                link: httpLink.create({
+                  uri: 'http://localhost:4000/graphql',
+                  
+                }), 
+              }
+            };
+          },
+          deps: [HttpLink],
         },
         TasksService,
         Location],
@@ -36,6 +54,7 @@ describe('ItemDetailPage', () => {
         CustomComponentsModule,
         TranslateModule.forRoot(), 
         HttpClientModule, 
+        ApolloModule, 
         RouterModule.forRoot([])  ]
     }).compileComponents();
 

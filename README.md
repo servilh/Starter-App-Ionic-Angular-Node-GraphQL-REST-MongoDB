@@ -37,7 +37,7 @@ You could check how to code CRUD (Create Read Update Delete) operations through 
 - **MultiLanguge**: Examples how to use ngx-translate for a multilanguage app
 - **Unit Testing**: Examples how to use Jasmine and Karma
 - **Dinaminc Form Component**: custom component which creates a form for edit/visualize an object of a given a class. In this component you could see how to create your DOM elements passing arguments.
-- **REST client using Observables** using Observables in order to manage HttpClient calls. Examples how to use RXJS.
+- **REST client**: using Observables in order to manage HttpClient calls. Examples how to use RXJS.
 - **Graphql**: examples how to use Grahql to update and fetch data, using graph cache with differents approachs. Examples how to use Apollo/client
 
 #### How to run it

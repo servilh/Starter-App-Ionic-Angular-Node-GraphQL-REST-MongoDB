@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "npm run dev",
+			"path": "back-node-mongo-docker",
+			"group": "test",
+			"problemMatcher": [],
+			"label": "Server",
+			"detail": "tsc -p ."
+		},
+		{
+			"type": "npm",
+			"script": "ionic serve",
+			"path": "front-ionic-angular",
+			"group": "test",
+			"problemMatcher": [],
+			"label": "Ionic",
+			"detail": "tsc -p ."
+		}
+	]
+}

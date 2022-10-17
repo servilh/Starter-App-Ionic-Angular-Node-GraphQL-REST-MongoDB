@@ -20,6 +20,8 @@ export class DynamicItemDetailComponent implements OnInit {
 
   public getEntries() {
     //if keys2show have keys return if not we show all of the object
+    if(this.item == null)
+      return [];
     if(this.keys2show)
       return this.keys2show;
     return Object.keys(this.item);

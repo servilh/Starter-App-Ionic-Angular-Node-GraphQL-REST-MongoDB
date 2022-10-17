@@ -18,11 +18,10 @@ export class ItemDetailPage implements OnInit {
   ngOnInit() {
     var id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.readonly = true;
-
-    if (this.dataSrv.tasksCache)
-      this.item = { ... this.dataSrv.tasksCache.find(x => x._id.toString() == id) };
-    else
+    this.readonly = true; 
+    // if (this.dataSrv.tasksCache)
+    //   this.item = { ... this.dataSrv.tasksCache.find(x => x._id.toString() == id) };
+    // else 
       this.dataSrv.GetItem(id).subscribe(i => {
         this.item = i.data;
       });

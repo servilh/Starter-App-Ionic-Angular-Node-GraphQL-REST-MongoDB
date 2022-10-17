@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import Task from '../../../../../../common/src/models/task';
 import { Location } from '@angular/common';
 import { TasksGqlService } from 'src/app/services/task-gql.service';
+import { ApolloModule, APOLLO_NAMED_OPTIONS, NamedOptions } from 'apollo-angular';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache } from '@apollo/client/core';
 
 @Component({
   selector: 'app-item-new-form',
